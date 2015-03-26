@@ -19,6 +19,26 @@ html {
 
 .snake-display {
   border: 1px solid black;
+  background-color: gray;
+  margin: 0 auto;
+}
+
+.game-over {
+  text-align: center;
+}
+
+.game-play {
+  display: block;
+  text-align: center;
+}
+
+.game-play label{
+  display: block;
+  margin: 15px 0;
+}
+
+.submit {
+  margin: 0 auto;
 }
 
 .cell {
@@ -26,7 +46,6 @@ html {
   float: left;
   width: 20px;
   height: 20px;
-  background-color: gray;
 }
 
 .row {
@@ -40,4 +59,5 @@ html {
 
 .apple {
   background-color: red;
+  border-radius: 10px;
 }

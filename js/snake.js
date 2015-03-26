@@ -11,11 +11,14 @@
   var Snake = window.Game.Snake = function (starting) {
     this.dir = _.sample(Object.keys(Game.DIRS));
     this.segments = [starting];
+    this.head = this.segments[0];
   };
 
   Snake.prototype = {
     turn: function(dir) {
-      this.dir = dir;
+      if (!this.isOpposite(dir)) {
+        this.dir = dir;
+      }
     },
 
     move: function(apple) {
@@ -25,6 +28,9 @@
 
       for (var i = 1; i < this.segments.length; i++) {
         var currentPos = this.segments[i].pos.concat([]);
+        if (head.equals(currentPos)) {
+          throw "Game over!";
+        }
         this.segments[i].pos = previousPos;
         previousPos = currentPos;
       }
@@ -54,10 +60,6 @@
 
     equals: function(pos) {
       return this.pos[0] === pos[0] && this.pos[1] === pos[1];
-    },
-
-    isOpposite: function(pos) {
-      return this.pos[0] === pos[1] && this.pos[1] === pos[0];
     }
   };
 
@@ -101,14 +103,13 @@
       do {
         x = Math.floor(Math.random() * this.rowWidth);
         y = Math.floor(Math.random() * this.rowWidth);
-        console.log(!this.isOccupied([x, y]));
       } while (this.isOccupied([x, y]));
 
       return new Coord([x, y]);
     },
 
     isNextMoveApple: function() {
-      var headPos = this.snake.segments[0].pos.concat([]);
+      var headPos = this.snake.head.pos.concat([]);
       var headDup = new Coord(headPos);
       if (headDup.plus(this.snake.dir).equals(this.apple.pos)) {
         return true;
@@ -124,6 +125,14 @@
         }
       }
       return false;
+    },
+
+    isOutOfBounds: function() {
+      var x = this.snake.head.pos[0];
+      var y = this.snake.head.pos[1];
+      if (x >= this.grid.length || x < 0 || y >= this.grid.length || y < 0) {
+        throw "Game over!";
+      }
     }
   };
 

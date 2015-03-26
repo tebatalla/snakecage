@@ -1,12 +1,13 @@
 (function() {
   window.Game = window.Game || {};
 
-  var View = window.Game.View = function($el, size) {
+  var View = window.Game.View = function($el, size, interval) {
     this.$el = $el;
     this.board = new Game.Board(size);
     this.bindEvents();
     this.draw();
-    setInterval(this.step.bind(this), 100);
+    this.setParentWidth();
+    this.interval = setInterval(this.step.bind(this), interval);
   };
 
   View.prototype = {
@@ -27,19 +28,32 @@
       }
     },
 
+    setParentWidth: function() {
+      var width = 0;
+      this.$el.children().first().children().width(function(i, w){ width += w; });
+      this.$el.children().width(width);
+      this.$el.width(width);
+    },
+
     bindEvents: function() {
       var that = this;
       $('body').keydown(this.handleKeyEvent.bind(this, event));
     },
 
     step: function() {
-      if (this.board.isNextMoveApple()) {
-        this.board.snake.move(true);
-        this.board.apple = this.board.makeApple();
-      } else {
-        this.board.snake.move();
+      try {
+        if (this.board.isNextMoveApple()) {
+          this.board.snake.move(true);
+          this.board.apple = this.board.makeApple();
+        } else {
+          this.board.snake.move();
+        }
+        this.board.isOutOfBounds();
+        this.draw();
+      } catch(e) {
+        clearInterval(this.interval);
+        this.$el.after("<h1 class='game-over'>Game over!</h1>");
       }
-      this.draw();
     },
 
     draw: function() {
