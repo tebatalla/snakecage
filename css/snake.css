@@ -19,7 +19,6 @@ html {
 
 .snake-display {
   border: 1px solid black;
-
 }
 
 .cell {
@@ -36,4 +35,9 @@ html {
 
 .snake {
   background-color: yellow;
+  border: 1px solid black;
+}
+
+.apple {
+  background-color: red;
 }
