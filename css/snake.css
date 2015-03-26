@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.snake-display {
+  border: 1px solid black;
+
+}
+
+.cell {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  background-color: gray;
+}
+
+.row {
+  display: block;
+}
+
+.snake {
+  background-color: yellow;
+}

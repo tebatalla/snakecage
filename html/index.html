@@ -2,12 +2,23 @@
 <html>
   <head>
     <title>Snake</title>
+    <link rel="stylesheet" href="../css/snake.css">
   </head>
   <body>
+    <div class="container">
+      <div class="snake-display clearfix">
 
+      </div>
+    </div>
 
     <script src="../js/jquery-2.1.1.js"></script>
     <script src="../js/underscore.js"></script>
     <script src="../js/snake.js"></script>
+    <script src="../js/snake-view.js"></script>
+    <script>
+      $(function(){
+        var view = new Game.View($('.snake-display'), 15);
+      })
+    </script>
   </body>
 </html>

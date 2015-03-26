@@ -58,7 +58,7 @@
 
   Board.prototype = {
     render: function() {
-      var display = "";
+      var display = [];
       for (var i = 0; i < this.grid.length; i++) {
         for (var j = 0; j < this.grid[i].length; j++) {
           this.snake.segments.forEach( function(segment) {
@@ -80,6 +80,18 @@
         array[i] = new Array(size);
       }
       return array;
+    },
+
+    makeApple: function() {
+
+    },
+
+    isOccupied: function(pos) {
+      // for (var i = 0; i < this.grid.length; i++) {
+      //   for (var j = 0; j < this.grid[i].length; j++) {
+      //     if (this.render)
+      //   }
+      // }
     }
   };
 
