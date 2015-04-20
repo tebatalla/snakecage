@@ -64,8 +64,8 @@
         rows += '<div class="row clearfix">';
         for (var j = 0; j < this.board.grid[i].length; j++) {
           cells += '<div class="cell';
-          var segments = _.filter(this.board.snake.segments, function(segment){
-            return segment.equals([i, j])
+          var segments = _.filter(this.board.snake.segments, function(segment) {
+            return segment.equals([i, j]);
           });
           if (segments.length > 0) {
             cells += ' snake" ';
