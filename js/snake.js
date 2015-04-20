@@ -42,7 +42,7 @@
 
     isOpposite: function(dir) {
       return (Game.DIRS[this.dir][0] + Game.DIRS[dir][0]) === 0 ||
-            (Game.DIRS[this.dir][1] + Game.DIRS[dir][1]) === 0
+            (Game.DIRS[this.dir][1] + Game.DIRS[dir][1]) === 0;
     }
 
   };
