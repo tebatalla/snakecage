@@ -1,0 +1,63 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.snake-display {
+  border: 1px solid black;
+  background-color: gray;
+  margin: 0 auto;
+}
+
+.game-over {
+  text-align: center;
+}
+
+.game-play {
+  display: block;
+  text-align: center;
+}
+
+.game-play label{
+  display: block;
+  margin: 15px 0;
+}
+
+.submit {
+  margin: 0 auto;
+}
+
+.cell {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+}
+
+.row {
+  display: block;
+}
+
+.snake {
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+.apple {
+  background-color: red;
+  border-radius: 10px;
+}
