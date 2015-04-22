@@ -87,7 +87,7 @@
         this.draw();
       } catch(e) {
         clearInterval(this.interval);
-        this.$el.after("<h1 class='game-over'>Game over!</h1>");
+        this.$el.after("<h1 class='game-over'>NOT THE BEES!</h1>");
         setTimeout(function() {
           $('.game-over').after('<a href="#" class="restart">Play again?</a>');
         }.bind(this), 1000);
@@ -95,7 +95,6 @@
     },
 
     draw: function () {
-      // this.$el.html('<pre>' + this.board.render() + '</pre>');
       var rows = "";
       var cells = "";
       for (var i = 0; i < this.board.grid.length; i++) {
@@ -105,6 +104,9 @@
           var segments = _.filter(this.board.snake.segments, function(segment) {
             return segment.equals([i, j]);
           });
+          if (this.board.snake.head.equals([i, j])) {
+            cells += ' head ' + this.board.snake.dir;
+          }
           if (segments.length > 0) {
             cells += ' snake" ';
           } else if (this.board.apple.equals([i, j])){
@@ -112,7 +114,11 @@
           } else {
             cells += '" ';
           }
-          cells += 'data-pos="' + [i, j] + '"></div>';
+          cells += 'data-pos="' + [i, j] + '">';
+          if (this.board.snake.head.equals([i, j])) {
+            cells += '<img class="cage-face" src="./img/cage.png">';
+          }
+          cells += '</div>';
         }
         rows += cells + '</div>';
         cells = "";

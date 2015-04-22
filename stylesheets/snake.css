@@ -47,6 +47,7 @@ html {
   float: left;
   width: 20px;
   height: 20px;
+  position: relative;
 }
 
 .row {
@@ -59,6 +60,34 @@ html {
 }
 
 .apple {
-  background-color: red;
-  border-radius: 10px;
+  background-image: url('../img/scroll.png');
+  background-size: contain;
+}
+
+img.cage-face {
+  max-width: 200%;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+.N {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
+.S {
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}
+
+.E {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
