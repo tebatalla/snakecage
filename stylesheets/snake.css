@@ -17,14 +17,15 @@ html {
   margin: 0 auto;
 }
 
-.snake-display {
+.snake-board {
   border: 1px solid black;
   background-color: gray;
   margin: 0 auto;
 }
 
-.game-over {
+.game-over, .restart {
   text-align: center;
+  display: block;
 }
 
 .game-play {
